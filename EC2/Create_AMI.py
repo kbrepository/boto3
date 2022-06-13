@@ -74,9 +74,9 @@ def lambda_handler(event, context):
 	instancelist=getInstanceList(instance_response)
 	print(instancelist)
 	print(len(instancelist))
-	imgresponse = ec2client.describe_images(Owners=['377659633502']).get('Images',[]) # List AMI's
+	imgresponse = ec2client.describe_images(Owners=['<ACCOUNT_ID>']).get('Images',[]) # List AMI's
 	print ("Image Response"+str(imgresponse))
-	snapshots = ec2client.describe_snapshots(MaxResults=1000, OwnerIds=['377659633502'])['Snapshots']
+	snapshots = ec2client.describe_snapshots(MaxResults=1000, OwnerIds=['<ACCOUNT_ID>'])['Snapshots']
 	deletion=(datetime.datetime.now() - datetime.timedelta(days=3)).date()
 	print(deletion)
 	if imgresponse:
